@@ -5,12 +5,12 @@
           <%= react_component("Article", { 
               title: article.title,
               path: article_path(article),
-              description: truncate(article.description, length: 100) 
+              description: truncate(article.description, length: 100),
+              author: article.user.username,
+              createdAt: article.created_at,
+              updatedAt: article.updated_at
             })%>
-          <div class="article-meta-details">
-            <small>Created by: <%= article.user.username if article.user %>, <%= time_ago_in_words(article.created_at) %> ago,
-                  last updated: <%= time_ago_in_words(article.updated_at) %> ago</small>  
-          </div>
+
         <% if article.categories.any? %>
           <p>Categories: <%= render article.categories %></p>
         <% end %>
